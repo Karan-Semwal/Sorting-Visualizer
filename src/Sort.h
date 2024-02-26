@@ -15,8 +15,9 @@ public:
     ~Sort() = default;
     Sort(const Sort&) = default;
 
-    // call operator for Sort 
-    void init();
+    void init(const std::vector<int>& data);
+
+    // call operator overload
     void operator()(sf::RenderWindow& window, std::vector<int>& data, SORT sort_algorithm);
 
     void drawData(const std::vector<int>& data, sf::RenderWindow& window);

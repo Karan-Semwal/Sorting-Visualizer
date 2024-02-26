@@ -8,7 +8,7 @@
 #include "Global.h"
 
 Visualizer::Visualizer()
-    : mWindow(new sf::RenderWindow(sf::VideoMode(WIDTH, HEIGHT), "Sorting Visualizer", sf::Style::Default))
+    : mWindow(new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Sorting Visualizer", sf::Style::Close))
 {
 }
 
@@ -20,10 +20,7 @@ Visualizer::~Visualizer()
 void Visualizer::start(std::vector<int>& data, SORT sort_algorithm)
 {
     int hasFinished = false;
-
-    size_t size_of_data = data.size();
-    BAR_WIDTH = (WIDTH - (size_of_data + 1) * BAR_PADDING) / size_of_data;
-    mSorter.init();
+    mSorter.init(data);
 
     sf::Event event;
     while (mWindow->isOpen())

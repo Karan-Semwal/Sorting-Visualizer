@@ -4,20 +4,25 @@
 
 int main()
 {
-    // data for sortign and visualizing
-    std::vector<int> data = { 
-        7, 5, 4, 11, 6, 8, 9, 3, 
-        5, 4, 3, 12, 9, 8, 6, 5, 
+    // data for sorting and visualizing
+    std::vector<int> data0 = {
+        7, 5, 4, 11, 6, 8, 9, 3,
+        5, 4, 3, 12, 9, 8, 6, 5,
         4, 3, 3, 8, 7, 4, 1, 15
     };
-    
-    
 
-    std::vector<int> nums = { 3, 2, 4, 1 };
+    std::vector<int> data1 = {
+        7, 5, 14, 11, 6, 18, 9, 27,
+        15, 46, 33, 12, 19, 8, 6, 5,
+        19, 30, 23, 8, 7, 4, 1, 15,
+        10, 20, 5, 18, 17, 4, 13, 5,
+        12, 9, 7, 9, 2, 10, 23, 11, 3
+    };
 
-    print(data);
+    printf("data size: %ld\n", data1.size());
+
+    print(data1);
     Visualizer visualizer;
-    visualizer.start(data, SORT::INSERTION_SORT);
-    print(data);
-    
+    visualizer.start(data1, SORT::INSERTION_SORT);
+    print(data1);
 }

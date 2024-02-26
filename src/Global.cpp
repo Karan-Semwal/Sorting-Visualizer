@@ -4,8 +4,9 @@
 
 void print(std::vector<int> &nums)
 {
+    printf("[ ");
     std::for_each(nums.begin(), nums.end(), [](int element) {
-        std::cout << element << " ";
+        printf("%d, ", element);
     });
-    std::cout << "\n";
+    printf("]\n");
 }

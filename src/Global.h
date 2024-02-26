@@ -1,15 +1,17 @@
 #pragma once
 #include <vector>
 
-inline static constexpr short WIDTH = 800;
-inline static constexpr short HEIGHT = 600;
+inline constexpr short WINDOW_WIDTH = 800;
+inline constexpr short WINDOW_HEIGHT = 600;
 
-inline static short BAR_WIDTH = 30;
-inline static constexpr short BAR_HEIGHT = 30;
-inline static constexpr short BAR_PADDING = 5;
+// default values
+inline float BAR_WIDTH_SCALER  = 10;
+inline float BAR_HEIGHT_SCALER = 20;
 
-inline static constexpr float POS_X = 100.f;
-inline static constexpr float POS_Y = HEIGHT - BAR_PADDING;
+inline constexpr short BAR_PADDING = 5;
 
+inline constexpr float POS_X = 0 + BAR_PADDING;
+inline constexpr float POS_Y = WINDOW_HEIGHT - BAR_PADDING;
 
+// print vector values
 void print(std::vector<int> &nums);

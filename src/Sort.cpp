@@ -2,9 +2,21 @@
 
 #include "Sort.h"
 #include <algorithm>
+#include <vector>
+#include <iostream>
 
-void Sort::init()
+void Sort::init(const std::vector<int>& data)
 {
+    size_t dataSize = data.size(); 
+    int maxValue = *std::max_element(data.begin(), data.end());
+
+    // caluclate bar width to adjust according to window width and data size
+    while (BAR_HEIGHT_SCALER * maxValue >= WINDOW_HEIGHT - BAR_PADDING && BAR_HEIGHT_SCALER > 2) {
+        BAR_HEIGHT_SCALER -= 0.5;
+    }
+
+    // caluclate bar width to adjust according to window width and data size
+    BAR_WIDTH_SCALER = (WINDOW_WIDTH - (dataSize + 1) * BAR_PADDING) / dataSize;
     mBar.init();
 }
 
@@ -37,7 +49,7 @@ void Sort::drawData(const std::vector<int>& data, sf::RenderWindow& window)
     std::for_each(data.begin(), data.end(), [&](int element) {
         mBar.resetBarSize();
         mBar->setSize(sf::Vector2f(mBar->getSize().x, mBar->getSize().y * element));
-        mBar->setPosition(sf::Vector2f(mBar->getPosition().x + BAR_WIDTH + BAR_PADDING, mBar->getPosition().y ));
+        mBar->setPosition(sf::Vector2f(mBar->getPosition().x + BAR_WIDTH_SCALER + BAR_PADDING, mBar->getPosition().y ));
         mBar->setRotation(180.f);
         mBar.draw(window);
     });

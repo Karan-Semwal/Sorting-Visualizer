@@ -16,8 +16,8 @@ Bar::~Bar()
 void Bar::init()
 {
     mShape->setFillColor(sf::Color::White);
-    mShape->setSize({ BAR_WIDTH, BAR_HEIGHT });
-    mShape->setPosition({ 0 + BAR_PADDING, POS_Y });
+    mShape->setSize({ BAR_WIDTH_SCALER, BAR_HEIGHT_SCALER });
+    mShape->setPosition({ POS_X, POS_Y });
 }
 
 void Bar::draw(sf::RenderWindow& window)
@@ -27,6 +27,5 @@ void Bar::draw(sf::RenderWindow& window)
 
 void Bar::resetBarSize()
 {
-    // mShape->setPosition(sf::Vector2f(POS_X, POS_Y));
-    mShape->setSize({ BAR_WIDTH, BAR_HEIGHT });
+    mShape->setSize({ BAR_WIDTH_SCALER, BAR_HEIGHT_SCALER });
 }
