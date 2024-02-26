@@ -1,4 +1,5 @@
 #include "Visualizer.h"
+#include "Sort.h"
 
 int main()
 {
@@ -9,6 +10,6 @@ int main()
         4, 3, 3, 8, 7, 4, 10, 15
     };
 
-    Visualizer vis;
-    vis.start(data, SORT::BUBBLE_SORT);
+    Visualizer visualizer;
+    visualizer.start(data, SORT::BUBBLE_SORT);
 }
