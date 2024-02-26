@@ -6,9 +6,19 @@
 #include <stdio.h>
 #include "Visualizer.h"
 
+static constexpr short WIDTH  = 800;
+static constexpr short HEIGHT = 600;
+
+static short BAR_WIDTH = 30;
+static constexpr short BAR_HEIGHT = 30;
+static constexpr short BAR_PADDING = 5;
+
+static constexpr float POS_X = 100.f;
+static constexpr float POS_Y = HEIGHT - BAR_PADDING;
+
 Visualizer::Visualizer()
-    : mWindow(new sf::RenderWindow(sf::VideoMode(600, 400), "Sorting Visualizer"))
-    , mShape(new sf::RectangleShape({ 40.f, 40.f }))
+    : mWindow(new sf::RenderWindow(sf::VideoMode(WIDTH, HEIGHT), "Sorting Visualizer"))
+    , mShape(new sf::RectangleShape())
 {
     init();
 }
@@ -21,17 +31,16 @@ Visualizer::~Visualizer()
 
 void Visualizer::init()
 {
-    mShape->setFillColor(sf::Color::White);    
+    mShape->setFillColor(sf::Color::White);
+    mShape->setSize({ BAR_WIDTH, BAR_HEIGHT });
+    mShape->setPosition({ 0 + BAR_PADDING, POS_Y });
 }
 
 void Visualizer::start(std::vector<int>& data, SORT sort)
 {
-    printf("%s\n", "Hello");
-    this->draw(); 
-}
+    size_t size_of_data = data.size();
+    BAR_WIDTH = (WIDTH - size_of_data * BAR_PADDING) / size_of_data ;
 
-void Visualizer::draw() 
-{
     sf::Event event;
     while (mWindow->isOpen())
     {
@@ -44,8 +53,27 @@ void Visualizer::draw()
                 mWindow->close();
         }
         
-        mWindow->clear();
-        mWindow->draw(*mShape);
+        this->draw(data);
+    }
+}
+
+void Visualizer::resetShapeSize()
+{
+    mShape->setSize({ BAR_WIDTH, BAR_HEIGHT });
+}
+
+void Visualizer::draw(const std::vector<int>& data)
+{
+    if (!hasFinished) {
+        std::for_each(data.begin(), data.end(), [&](int element) {
+            printf("%d\n", element);
+            resetShapeSize();
+            mShape->setSize(sf::Vector2f(mShape->getSize().x, mShape->getSize().y * element * 1));
+            mShape->setPosition(sf::Vector2f(mShape->getPosition().x + BAR_WIDTH + BAR_PADDING, mShape->getPosition().y ));
+            mShape->setRotation(180.f);
+            mWindow->draw(*mShape);
+        });
         mWindow->display();
+        hasFinished = true;
     }
 }
