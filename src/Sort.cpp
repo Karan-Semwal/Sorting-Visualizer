@@ -1,25 +1,11 @@
-#include "Sort.h"
 #include <SFML/Graphics/RectangleShape.hpp>
 
-Sort::Sort()
+#include "Sort.h"
+#include <algorithm>
+
+void Sort::init()
 {
     mBar.init();
-}
-
-void Sort::bubble_sort(sf::RenderWindow& window, std::vector<int>& data)
-{
-    updateDraw(data, window);    
-    displayData(window);
-}
-
-void Sort::selection_sort(sf::RenderWindow& window, std::vector<int>& data)
-{
-
-}
-
-void Sort::insertion_sort(sf::RenderWindow& window, std::vector<int>& data)
-{
-
 }
 
 void Sort::operator()(sf::RenderWindow& window, std::vector<int>& data, SORT sort_algorithm)
@@ -44,19 +30,16 @@ void Sort::operator()(sf::RenderWindow& window, std::vector<int>& data, SORT sor
     }
 }
 
-void Sort::updateDraw(const std::vector<int>& data, sf::RenderWindow& window)
+void Sort::drawData(const std::vector<int>& data, sf::RenderWindow& window)
 {
+    mBar.init();
+    window.clear();
     std::for_each(data.begin(), data.end(), [&](int element) {
-        printf("%d\n", element);
         mBar.resetBarSize();
-        mBar->setSize(sf::Vector2f(mBar->getSize().x, mBar->getSize().y * element * 1));
+        mBar->setSize(sf::Vector2f(mBar->getSize().x, mBar->getSize().y * element));
         mBar->setPosition(sf::Vector2f(mBar->getPosition().x + BAR_WIDTH + BAR_PADDING, mBar->getPosition().y ));
         mBar->setRotation(180.f);
         mBar.draw(window);
     });
-}
-
-void Sort::displayData(sf::RenderWindow& window)
-{
     window.display();
 }

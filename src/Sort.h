@@ -11,16 +11,17 @@ enum SORT
 
 class Sort {
 public:
-    Sort();
+    Sort() = default;
     ~Sort() = default;
     Sort(const Sort&) = default;
 
     // call operator for Sort 
+    void init();
     void operator()(sf::RenderWindow& window, std::vector<int>& data, SORT sort_algorithm);
-    
-    void updateDraw(const std::vector<int>& data, sf::RenderWindow& window);
-    void displayData(sf::RenderWindow& window);
 
+    void drawData(const std::vector<int>& data, sf::RenderWindow& window);
+
+    // Sorting algorithms
     void bubble_sort(sf::RenderWindow& window, std::vector<int>& data);
     void selection_sort(sf::RenderWindow& window, std::vector<int>& data);
     void insertion_sort(sf::RenderWindow& window, std::vector<int>& data);

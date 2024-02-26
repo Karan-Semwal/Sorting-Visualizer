@@ -27,5 +27,6 @@ void Bar::draw(sf::RenderWindow& window)
 
 void Bar::resetBarSize()
 {
+    // mShape->setPosition(sf::Vector2f(POS_X, POS_Y));
     mShape->setSize({ BAR_WIDTH, BAR_HEIGHT });
 }
