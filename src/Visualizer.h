@@ -11,7 +11,7 @@ public:
     Visualizer();
     ~Visualizer();
     Visualizer(const Visualizer&) = delete;
-    
+
     void start(std::vector<int>& data, SORT sort = SORT::BUBBLE_SORT);
 
 private:

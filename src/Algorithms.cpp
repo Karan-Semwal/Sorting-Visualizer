@@ -1,10 +1,18 @@
 #include "Sort.h"
 
+void wait()
+{
+    size_t tmp = 0;
+    while (tmp < 150000000)
+        tmp++;
+}
+
 // Bubble Sort
 void Sort::bubble_sort(sf::RenderWindow &window, std::vector<int> &data)
 {
     drawData(data, window);
-    size_t tmp = 0;
+    printf("Bubble Sort.\n");
+
     int n = data.size();
     bool swapped;
     for (int i = 0; i < n - 1; ++i)
@@ -14,12 +22,10 @@ void Sort::bubble_sort(sf::RenderWindow &window, std::vector<int> &data)
         {
             if (data[j] > data[j + 1])
             {
-                tmp = 0;
                 std::swap(data[j], data[j + 1]);
                 swapped = true;
-                while (tmp < 150000000)
-                    tmp++;
 
+                wait();
                 drawData(data, window);
             }
         }
@@ -31,24 +37,43 @@ void Sort::bubble_sort(sf::RenderWindow &window, std::vector<int> &data)
 // Selection Sort
 void Sort::selection_sort(sf::RenderWindow &window, std::vector<int> &data)
 {
+    drawData(data, window);
+    printf("Selection Sort.\n");
+
+    int n = data.size();
+    for (int i = 0; i < n - 1; ++i)
+    {
+        int minIndex = i;
+        for (int j = i + 1; j < n; ++j)
+        {
+            if (data[j] < data[minIndex])
+            {
+                minIndex = j;
+            }
+        }
+        if (minIndex != i)
+        {
+            std::swap(data[i], data[minIndex]);
+            
+            wait();
+            drawData(data, window);
+        }
+    }
 }
 
 // Insertion Sort
 void Sort::insertion_sort(sf::RenderWindow &window, std::vector<int> &data)
 {
     drawData(data, window);
-    size_t tmp = 0;
+    printf("Insertion Sort.\n");
 
-    printf("insertion sort.\n");
     for (size_t i = 1; i < data.size(); i++)
     {
         for (size_t j = i; j > 0 && data.at(j) < data.at(j - 1); j--)
         {
-            tmp = 0;
             std::swap(data.at(j), data.at(j - 1));
-            while (tmp < 150000000)
-                tmp++;
 
+            wait();
             drawData(data, window);
         }
     }
