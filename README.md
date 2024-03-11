@@ -9,9 +9,11 @@
 
 ---
 
-### Screenshots
+### Video
 
-![screenshot-sorting-visualizer](https://github.com/Karan-Semwal/Sorting-Visualizer/assets/96228962/b287e483-45c4-420d-8641-b330034d62d1)
+<!-- ![screenshot-sorting-visualizer](https://github.com/Karan-Semwal/Sorting-Visualizer/assets/96228962/b287e483-45c4-420d-8641-b330034d62d1) -->
+
+https://github.com/Karan-Semwal/Sorting-Visualizer/assets/96228962/82c33daf-d42b-42c6-b31f-71ecf075d152
 
 ---
 
