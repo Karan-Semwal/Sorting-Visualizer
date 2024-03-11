@@ -7,8 +7,6 @@ then
     mkdir build
 fi
 
-cd build
-cmake ..
-make
-
-./bin/application
+cmake -S . -B build
+cmake --build build
+./sv_app
