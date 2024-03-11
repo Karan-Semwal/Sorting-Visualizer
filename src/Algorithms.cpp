@@ -1,11 +1,6 @@
 #include "Sort.h"
-
-void wait()
-{
-    size_t tmp = 0;
-    while (tmp < 150000000)
-        tmp++;
-}
+#include "Timer.h"
+#include "Global.h"
 
 // Bubble Sort
 void Sort::bubble_sort(sf::RenderWindow &window, std::vector<int> &data)
@@ -25,7 +20,7 @@ void Sort::bubble_sort(sf::RenderWindow &window, std::vector<int> &data)
                 std::swap(data[j], data[j + 1]);
                 swapped = true;
 
-                wait();
+                Wait_For_Seconds(DELAY_TIME);
                 drawData(data, window);
             }
         }
@@ -55,7 +50,7 @@ void Sort::selection_sort(sf::RenderWindow &window, std::vector<int> &data)
         {
             std::swap(data[i], data[minIndex]);
             
-            wait();
+            Wait_For_Seconds(DELAY_TIME);
             drawData(data, window);
         }
     }
@@ -73,7 +68,7 @@ void Sort::insertion_sort(sf::RenderWindow &window, std::vector<int> &data)
         {
             std::swap(data.at(j), data.at(j - 1));
 
-            wait();
+            Wait_For_Seconds(DELAY_TIME);
             drawData(data, window);
         }
     }

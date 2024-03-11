@@ -2,6 +2,8 @@
 #include <iostream>
 #include <algorithm>
 
+#include "Timer.h"
+
 void print(std::vector<int> &nums)
 {
     printf("[ ");
@@ -9,4 +11,15 @@ void print(std::vector<int> &nums)
         printf("%d, ", element);
     });
     printf("]\n");
+}
+
+void Wait_For_Seconds(float delayTime)
+{
+    static Timer timer(0.f);
+    timer.start();
+
+    timer.reset();
+    while (timer.getElapsedTime() < delayTime) {
+        timer.update();
+    }
 }
